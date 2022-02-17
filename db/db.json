@@ -2,5 +2,9 @@
     {
         "title":"Test Title",
         "text":"Test text"
+    },
+    {
+        "title": "THIS IS A TITLE",
+        "text": "THIS IS SOME TEXT"
     }
 ]
