@@ -1,10 +1,17 @@
-[
+{
+  "notes": [
     {
-        "title":"Test Title",
-        "text":"Test text"
+      "title": "Test Title",
+      "text": "Test text"
     },
     {
-        "title": "THIS IS A TITLE",
-        "text": "THIS IS SOME TEXT"
+      "title": "THIS IS A TITLE",
+      "text": "THIS IS SOME TEXT"
+    },
+    {
+      "title": "First Note",
+      "text": "This note is the first note that uses a post request.",
+      "id": "MYkLw"
     }
-]
+  ]
+}

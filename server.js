@@ -2,6 +2,8 @@ const { urlencoded } = require('express');
 const express = require('express');
 const notes = require('./db/db.json');
 const { nanoid } = require('nanoid');
+const fs = require('fs');
+const path = require('path');
 
 
 const PORT = process.env.PORT || 3001;
@@ -13,7 +15,14 @@ app.use(urlencoded({ extended: true }));
 app.use(express.json());
 
 function createNewNote(body, notesArray) {
-    console.log(body);
+    const note = body;
+    notesArray.push(note);
+
+    // Save it to actual json file
+    fs.writeFileSync(
+        path.join(__dirname, './db/db.json'),
+        JSON.stringify({ notes: notesArray }, null, 2)
+    );
 
     return body;
 };
@@ -23,8 +32,13 @@ app.get('/api/notes', (req, res) => {
 });
 
 app.post('/api/notes', (req, res) => {
-    console.log(req.body);
-    res.json(req.body);
+    // set id for new saved notes
+    req.body.id = nanoid(5);
+
+    // adds note to json file
+    const note = createNewNote(req.body, notes);
+
+    res.json(note);
 })
 
 app.listen(PORT, () => {
