@@ -1,7 +1,7 @@
 const { urlencoded } = require('express');
 const express = require('express');
-const notes = require('./db/db.json');
 
+// routes imported
 const htmlRoutes = require('./routes/htmlRoutes');
 const apiRoutes = require('./routes/apiRoutes');
 
@@ -14,9 +14,11 @@ app.use(urlencoded({ extended: true }));
 // parse incoming JSON data
 app.use(express.json());
 
+// using html/api routes
 app.use('/', htmlRoutes);
 app.use('/api', apiRoutes);
 
+// makes public folder available to use
 app.use(express.static('public'));
 
 app.listen(PORT, () => {
